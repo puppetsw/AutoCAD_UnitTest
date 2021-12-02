@@ -1,0 +1,3 @@
+netload "C:\Users\scott\RiderProjects\AutoCAD_UnitTest\ACADTestRunner\bin\Debug\ACADTestRunner.dll"
+RunTests
+
