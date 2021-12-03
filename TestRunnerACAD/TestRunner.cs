@@ -20,23 +20,27 @@ namespace TestRunnerACAD
         public static void RunTests()
         {
             var directoryPlugin = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            if (directoryPlugin == null)
+                return;
+
             var directoryReportUnit = Path.Combine(directoryPlugin, @"ReportUnit");
             Directory.CreateDirectory(directoryReportUnit);
-            var fileInputXML = Path.Combine(directoryReportUnit, @"Report-NUnit.xml");
-            var fileOutputHTML = Path.Combine(directoryReportUnit, @"Report-NUnit.html");
+            var fileInputXml = Path.Combine(directoryReportUnit, @"Report-NUnit.xml");
+            var fileOutputHtml = Path.Combine(directoryReportUnit, @"Report-NUnit.html");
             var generatorReportUnit = Path.Combine(directoryPlugin, @"ReportUnit", @"ReportUnit.exe");
 
             var nunitArgs = new List<string>
             {
                 "--trace=verbose"
-                ,"--result=" + fileInputXML
+                ,"--result=" + fileInputXml
             }.ToArray();
 
             new AutoRun().Execute(nunitArgs);
 
-            CreateHtmlReport(fileInputXML, fileOutputHTML, generatorReportUnit);
+            CreateHtmlReport(fileInputXml, fileOutputHtml, generatorReportUnit);
 
-            Process.Start(fileOutputHTML);
+            Process.Start(fileOutputHtml);
         }
 
         /// <summary>
