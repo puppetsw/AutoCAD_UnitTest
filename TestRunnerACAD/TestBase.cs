@@ -16,7 +16,7 @@ namespace TestRunnerACAD
         /// </summary>
         /// <param name="drawingFile">Path to the test drawing file.</param>
         /// <param name="testActions">Test actions to execute.</param>
-        protected void ExecuteTestAction(string drawingFile = "", params Action<Database, Transaction>[] testActions)
+        protected static void ExecuteTestActions(string drawingFile = "", params Action<Database, Transaction>[] testActions)
         {
             bool defaultDrawing;
             if (string.IsNullOrEmpty(drawingFile))
