@@ -1,0 +1,1 @@
+Make sure to add your project output directory to AutoCAD's trusted folders.
