@@ -1,6 +1,8 @@
 # AutoCAD Test Runner
 
-An AutoCAD test runner using the NUnitLite framework.
+An AutoCAD test runner using the NUnitLite framework. 
+
+Inspired by the work done by CADBloke. https://github.com/CADbloke/CADtest
 
 ## Running
 
