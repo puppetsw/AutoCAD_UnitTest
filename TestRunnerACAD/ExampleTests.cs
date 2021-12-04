@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using NUnit.Framework;
@@ -16,25 +15,25 @@ namespace TestRunnerACAD
         }
 
         [Test]
-        public void Test_method_new_drawing()
+        public void Test_Add_Line()
         {
             //Use a new drawing
             long lineId = 0;
 
-            Action<Database, Transaction> action1 = (db, trans) =>
+            void Action1(Database db, Transaction tr)
             {
                 var line = new Line(new Point3d(0, 0, 0), new Point3d(100, 100, 100));
 
-                var blockTable = (BlockTable)trans.GetObject(db.BlockTableId, OpenMode.ForRead);
-                var modelSpace = (BlockTableRecord)trans.GetObject(blockTable[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
+                var blockTable = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                var modelSpace = (BlockTableRecord)tr.GetObject(blockTable[BlockTableRecord.ModelSpace], OpenMode.ForWrite);
 
                 var objectId = modelSpace.AppendEntity(line);
-                trans.AddNewlyCreatedDBObject(line, true);
+                tr.AddNewlyCreatedDBObject(line, true);
 
                 lineId = objectId.Handle.Value;
-            };
+            }
 
-            Action<Database, Transaction> action2 = (db, trans) =>
+            void Action2(Database db, Transaction tr)
             {
                 //Check in another transaction if the line was created
 
@@ -43,9 +42,10 @@ namespace TestRunnerACAD
                 {
                     Assert.Fail("Line didn't created");
                 }
-            };
+            }
 
-            ExecuteTestActions(null, action1, action2);
+            // Run the tests
+            ExecuteTestActions(null, Action1, Action2);
         }
     }
 }
