@@ -13,7 +13,7 @@ netload "C:\Users\scott\RiderProjects\AutoCAD_UnitTest\TestRunnerACAD\bin\Debug\
 RunTests
 ```
 
-Make sure to add your project output directory to AutoCAD's trusted folders.
+Make sure to add your project output directory to AutoCAD's trusted folders. Also add references to acdbmgd.dll etc.
 
 Set your run configuration as follows...
 
