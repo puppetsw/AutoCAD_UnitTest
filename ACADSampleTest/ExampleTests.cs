@@ -2,8 +2,9 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using NUnit.Framework;
+using TestRunnerACAD;
 
-namespace TestRunnerACAD
+namespace ACADSampleTest
 {
     [TestFixture]
     [Apartment(ApartmentState.STA)]
@@ -13,6 +14,11 @@ namespace TestRunnerACAD
         public void Test_Pass()
         {
             Assert.Pass("This test should always passes.");
+        }
+        [Test]
+        public void Test_Fail()
+        {
+            Assert.Fail("This test should always fail.");
         }
 
         [Test]

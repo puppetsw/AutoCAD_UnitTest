@@ -25,7 +25,8 @@ namespace TestRunnerACAD
             var directoryReportUnit = Path.Combine(directoryPlugin, ReportToolFolderName);
             Directory.CreateDirectory(directoryReportUnit);
             var fileInputXml = Path.Combine(directoryReportUnit, ReportNunitXml);
-
+            if (File.Exists(fileInputXml))
+                File.Delete(fileInputXml);  
             var nunitArgs = new List<string>
             {
                 "--trace=verbose", "--result=" + fileInputXml

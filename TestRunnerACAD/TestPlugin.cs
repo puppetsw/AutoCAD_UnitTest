@@ -28,7 +28,11 @@ namespace TestRunnerACAD
             var directoryReportUnit = Path.Combine(directoryPlugin,TestRunner.ReportToolFolderName);
             Directory.CreateDirectory(directoryReportUnit);
             var fileInputXml = Path.Combine(directoryReportUnit, TestRunner.ReportNunitXml);
+            if (!File.Exists(fileInputXml))
+                return;
             var fileOutputHtml = Path.Combine(directoryReportUnit, ReportOutputHtml);
+            if (File.Exists(fileOutputHtml))
+                File.Delete(fileOutputHtml);    
             var generatorReportUnit = Path.Combine(directoryPlugin, TestRunner.ReportToolFolderName, ReportToolFileName);
             //The extentreports-dotnet-cli deprecates ReportUnit. Can only define output folder and  export to default index.html
             CreateHtmlReport(fileInputXml, directoryReportUnit, generatorReportUnit);
@@ -41,6 +45,8 @@ namespace TestRunnerACAD
         /// <param name="fileName"></param>
         private static void OpenHtmlReport(string fileName)
         {
+            if (!File.Exists(fileName))
+                return; 
             using (var process = new Process())
             {
                 process.StartInfo.UseShellExecute = true;
