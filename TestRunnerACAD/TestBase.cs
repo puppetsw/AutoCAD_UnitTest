@@ -7,16 +7,17 @@ using NUnit.Framework;
 namespace TestRunnerACAD
 {
     /// <summary>
-    /// Base class for ACAD tests.
+    ///     Base class for ACAD tests.
     /// </summary>
     public abstract class TestBase
     {
         /// <summary>
-        /// Executes a list of delegate actions
+        ///     Executes a list of delegate actions
         /// </summary>
         /// <param name="drawingFile">Path to the test drawing file.</param>
         /// <param name="testActions">Test actions to execute.</param>
-        protected static void ExecuteTestActions(string drawingFile = "", params Action<Database, Transaction>[] testActions)
+        protected static void ExecuteTestActions(string drawingFile = "",
+            params Action<Database, Transaction>[] testActions)
         {
             bool defaultDrawing;
             if (string.IsNullOrEmpty(drawingFile))
@@ -28,10 +29,7 @@ namespace TestRunnerACAD
             else
             {
                 defaultDrawing = false;
-                if (!File.Exists(drawingFile))
-                {
-                    Assert.Fail($"Drawing file {drawingFile} does not exist.");
-                }
+                if (!File.Exists(drawingFile)) Assert.Fail($"Drawing file {drawingFile} does not exist.");
             }
 
             Exception exception = null;
@@ -48,7 +46,6 @@ namespace TestRunnerACAD
                 HostApplicationServices.WorkingDatabase = db; // change to the current database.
 
                 foreach (var testAction in testActions)
-                {
                     using (var tr = db.TransactionManager.StartTransaction())
                     {
                         try
@@ -63,9 +60,10 @@ namespace TestRunnerACAD
                             tr.Commit();
                             break;
                         }
+
                         tr.Commit();
                     }
-                }
+
                 // Change the database back to the original.
                 HostApplicationServices.WorkingDatabase = oldDb;
             }
@@ -73,10 +71,7 @@ namespace TestRunnerACAD
             // From CADBloke
             // Throw exception outside of transaction.
             // Sometimes Autocad crashes when exception throws.
-            if (exception != null)
-            {
-                throw exception;
-            }
+            if (exception != null) throw exception;
         }
     }
 }
