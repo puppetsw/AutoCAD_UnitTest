@@ -1,6 +1,0 @@
-setvar
-trustedpaths
-D:/leaveblackgithub/AutoCAD_UnitTest/TestRunnerACAD/bin/Debug/
-netload D:/leaveblackgithub/AutoCAD_UnitTest/TestRunnerACAD/bin/Debug/TestRunnerACAD.dll
-RunTests
-
