@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
+using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 using NUnitLite;
 using TestRunnerACAD;
@@ -9,30 +12,14 @@ using TestRunnerACAD;
 
 namespace TestRunnerACAD
 {
-    public static class TestRunner
+    public class TestRunner : TestRunnerBase
     {
-        public const string ReportToolFolderName = @"ExtentReports";
-        public const string ReportNunitXml = @"Report-NUnit.xml";
-
         [CommandMethod("RunTests", CommandFlags.Session)]
-        public static void RunTests()
+        public void RunTests()
         {
-            var directoryPlugin = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-            if (directoryPlugin == null)
-                return;
-
-            var directoryReportUnit = Path.Combine(directoryPlugin, ReportToolFolderName);
-            Directory.CreateDirectory(directoryReportUnit);
-            var fileInputXml = Path.Combine(directoryReportUnit, ReportNunitXml);
-            if (File.Exists(fileInputXml))
-                File.Delete(fileInputXml);  
-            var nunitArgs = new List<string>
-            {
-                "--trace=verbose", "--result=" + fileInputXml
-            }.ToArray();
-
-            new AutoRun().Execute(nunitArgs);
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string directoryPlugin = Path.GetDirectoryName(assembly.Location);
+            RunTestsBase(assembly, directoryPlugin);
         }
     }
 }

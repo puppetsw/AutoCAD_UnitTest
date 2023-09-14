@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestRunnerACAD", "TestRunnerACAD\TestRunnerACAD.csproj", "{E63BEBF1-521B-4665-ADAE-C55E1C4898CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACADSampleTest", "ACADSampleTest\ACADSampleTest.csproj", "{0D9B48BE-20B0-4C41-880D-A42B2A491218}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACADExampleTest", "ACADExampleTest\ACADExampleTest.csproj", "{0D9B48BE-20B0-4C41-880D-A42B2A491218}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

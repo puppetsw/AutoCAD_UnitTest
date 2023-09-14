@@ -55,12 +55,16 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExampleTests.cs" />
     <Compile Include="TestPlugin.cs" />
     <Compile Include="TestRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
+    <Compile Include="TestRunnerBase.cs" />
+    <Compile Include="TestRunnerConsts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

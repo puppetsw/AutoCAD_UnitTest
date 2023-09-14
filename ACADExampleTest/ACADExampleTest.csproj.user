@@ -3,13 +3,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Program Files\Autodesk\AutoCAD 2019\accoreconsole.exe</StartProgram>
-    <StartArguments>/s D:/leaveblackgithub/AutoCAD_UnitTest/TestRunnerACAD/TestLoader.scr</StartArguments>
-    <StartWorkingDirectory>D:\leaveblackgithub\AutoCAD_UnitTest\ACADSampleTest\bin\Debug\</StartWorkingDirectory>
+    <StartArguments>/s D:/leaveblackgithub/AutoCAD_UnitTest/ACADExampleTest/TestLoader.scr</StartArguments>
+    <StartWorkingDirectory>D:\leaveblackgithub\AutoCAD_UnitTest\ACADExampleTest\bin\Debug\</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Program Files\Autodesk\AutoCAD 2019\accoreconsole.exe</StartProgram>
-    <StartArguments>/s D:/leaveblackgithub/AutoCAD_UnitTest/TestRunnerACAD/TestLoader.scr</StartArguments>
+    <StartArguments>/s D:/leaveblackgithub/AutoCAD_UnitTest/ACADSampleTest/TestLoader.scr</StartArguments>
     <StartWorkingDirectory>D:\leaveblackgithub\AutoCAD_UnitTest\ACADSampleTest\bin\Debug\</StartWorkingDirectory>
   </PropertyGroup>
   <PropertyGroup>

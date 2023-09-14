@@ -10,9 +10,6 @@ namespace TestRunnerACAD
 {
     public class TestPlugin : IExtensionApplication
     {
-        public const string ReportOutputHtml = @"index.html";
-        public const string ReportToolFileName = @"ExtentReports.exe";
-
         public void Initialize()
         {
             // Don't need to do anything here.
@@ -25,15 +22,15 @@ namespace TestRunnerACAD
             if (directoryPlugin == null)
                 return;
 
-            var directoryReportUnit = Path.Combine(directoryPlugin,TestRunner.ReportToolFolderName);
+            var directoryReportUnit = Path.Combine(directoryPlugin,TestRunnerConsts.ReportToolFolderName);
             Directory.CreateDirectory(directoryReportUnit);
-            var fileInputXml = Path.Combine(directoryReportUnit, TestRunner.ReportNunitXml);
+            var fileInputXml = Path.Combine(directoryReportUnit, TestRunnerConsts.ReportNunitXml);
             if (!File.Exists(fileInputXml))
                 return;
-            var fileOutputHtml = Path.Combine(directoryReportUnit, ReportOutputHtml);
+            var fileOutputHtml = Path.Combine(directoryReportUnit, TestRunnerConsts.ReportOutputHtml);
             if (File.Exists(fileOutputHtml))
                 File.Delete(fileOutputHtml);    
-            var generatorReportUnit = Path.Combine(directoryPlugin, TestRunner.ReportToolFolderName, ReportToolFileName);
+            var generatorReportUnit = Path.Combine(directoryPlugin, TestRunnerConsts.ReportToolFolderName, TestRunnerConsts.ReportToolFileName);
             //The extentreports-dotnet-cli deprecates ReportUnit. Can only define output folder and  export to default index.html
             CreateHtmlReport(fileInputXml, directoryReportUnit, generatorReportUnit);
             OpenHtmlReport(fileOutputHtml);

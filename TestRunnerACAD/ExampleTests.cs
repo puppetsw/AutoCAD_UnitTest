@@ -11,18 +11,18 @@ namespace ACADSampleTest
     public class ExampleTests : TestBase
     {
         [Test]
-        public void Test_Pass()
+        public void ExampleTest_Pass()
         {
             Assert.Pass("This test should always passes.");
         }
         [Test]
-        public void Test_Fail()
+        public void ExampleTest_Fail()
         {
             Assert.Fail("This test should always fail.");
         }
 
         [Test]
-        public void Test_Add_Line()
+        public void ExampleTest_Add_Line()
         {
             //Use a new drawing
             long lineId = 0;
