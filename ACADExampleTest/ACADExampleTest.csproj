@@ -8,8 +8,8 @@
     <ProjectGuid>{0D9B48BE-20B0-4C41-880D-A42B2A491218}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ACADSampleTest</RootNamespace>
-    <AssemblyName>ACADSampleTest</AssemblyName>
+    <RootNamespace>ACADExampleTest</RootNamespace>
+    <AssemblyName>ACADExampleTest</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

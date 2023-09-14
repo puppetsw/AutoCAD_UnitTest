@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Reflection;
-using ACADSampleTest;
+using ACADExampleTest;
 using Autodesk.AutoCAD.Runtime;
 using TestRunnerACAD;
 
 [assembly: CommandClass(typeof(TestRunnerNew))]
 
-namespace ACADSampleTest
+namespace ACADExampleTest
 {
     public class TestRunnerNew : TestRunnerBase
     {
