@@ -4,11 +4,11 @@ using ACADExampleTest;
 using Autodesk.AutoCAD.Runtime;
 using TestRunnerACAD;
 
-[assembly: CommandClass(typeof(TestRunnerNew))]
+[assembly: CommandClass(typeof(TestRunner))]
 
 namespace ACADExampleTest
 {
-    public class TestRunnerNew : TestRunnerBase
+    public class TestRunner : TestRunnerBase
     {
         [CommandMethod("RunTests", CommandFlags.Session)]
         public void RunTests()
