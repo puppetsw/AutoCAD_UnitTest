@@ -1,3 +1,11 @@
+Forked from puppetsw/AutoCAD_UnitTest
+
+# Updated Sep 14, 2023 by leaveblackgithub
+1. Add Supports to AutoCAD 2019
+2. The extentreports-dotnet-cli deprecates ReportUnit. Use extent-framework / extentreports-dotnet-cli to replace ReportUnit. https://github.com/extent-framework/extentreports-dotnet-cli
+3. Add Trustedpaths in scr file.
+4. Move example tests to separate project to isolate changes.
+
 # AutoCAD Test Runner
 
 An AutoCAD test runner using the NUnitLite framework. 
