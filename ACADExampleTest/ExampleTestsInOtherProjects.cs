@@ -2,21 +2,28 @@
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 using NUnit.Framework;
+using TestRunnerACAD;
 
-namespace TestRunnerACAD
+namespace ACADExampleTest
 {
     [TestFixture]
     [Apartment(ApartmentState.STA)]
-    public class ExampleTests : TestBase
+    public class ExampleTestsInOtherProjects : TestBase
     {
         [Test]
-        public void Test_Pass()
+        public void OtherTest_Pass()
         {
             Assert.Pass("This test should always passes.");
         }
 
         [Test]
-        public void Test_Add_Line()
+        public void OtherTest_Fail()
+        {
+            Assert.Fail("This test should always fail.");
+        }
+
+        [Test]
+        public void OtherTest_Add_Line()
         {
             //Use a new drawing
             long lineId = 0;

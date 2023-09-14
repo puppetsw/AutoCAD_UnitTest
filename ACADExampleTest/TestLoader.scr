@@ -1,0 +1,6 @@
+setvar
+trustedpaths
+D:/leaveblackgithub/AutoCAD_UnitTest/ACADExampleTest/bin/Debug/
+netload D:/leaveblackgithub/AutoCAD_UnitTest/ACADExampleTest/bin/Debug/ACADExampleTest.dll
+RunTests
+
