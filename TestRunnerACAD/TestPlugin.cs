@@ -5,10 +5,14 @@ using Autodesk.AutoCAD.Runtime;
 using TestRunnerACAD;
 
 [assembly: ExtensionApplication(typeof(TestPlugin))]
+
 namespace TestRunnerACAD
 {
     public class TestPlugin : IExtensionApplication
     {
+        public const string ReportOutputHtml = @"index.html";
+        public const string ReportToolFileName = @"ExtentReports.exe";
+
         public void Initialize()
         {
             // Don't need to do anything here.
@@ -21,18 +25,18 @@ namespace TestRunnerACAD
             if (directoryPlugin == null)
                 return;
 
-            var directoryReportUnit = Path.Combine(directoryPlugin, @"ReportUnit");
+            var directoryReportUnit = Path.Combine(directoryPlugin,TestRunner.ReportToolFolderName);
             Directory.CreateDirectory(directoryReportUnit);
-            var fileInputXml = Path.Combine(directoryReportUnit, @"Report-NUnit.xml");
-            var fileOutputHtml = Path.Combine(directoryReportUnit, @"Report-NUnit.html");
-            var generatorReportUnit = Path.Combine(directoryPlugin, @"ReportUnit", @"ReportUnit.exe");
-
-            CreateHtmlReport(fileInputXml, fileOutputHtml, generatorReportUnit);
+            var fileInputXml = Path.Combine(directoryReportUnit, TestRunner.ReportNunitXml);
+            var fileOutputHtml = Path.Combine(directoryReportUnit, ReportOutputHtml);
+            var generatorReportUnit = Path.Combine(directoryPlugin, TestRunner.ReportToolFolderName, ReportToolFileName);
+            //The extentreports-dotnet-cli deprecates ReportUnit. Can only define output folder and  export to default index.html
+            CreateHtmlReport(fileInputXml, directoryReportUnit, generatorReportUnit);
             OpenHtmlReport(fileOutputHtml);
         }
 
         /// <summary>
-        /// Opens a HTML report with the default viewer.
+        ///     Opens a HTML report with the default viewer.
         /// </summary>
         /// <param name="fileName"></param>
         private static void OpenHtmlReport(string fileName)
@@ -47,18 +51,18 @@ namespace TestRunnerACAD
         }
 
         /// <summary>
-        /// Creates a HTML report based on the NUnit XML report.
+        ///     Creates a HTML report based on the NUnit XML report.
         /// </summary>
         /// <param name="inputFile">The NUnit XML file.</param>
-        /// <param name="outputFile">The output HTML report file.</param>
+        /// <param name="outputFolder">The output HTML report file.</param>
         /// <param name="reportUnitPath">Path to the ReportUnit executable.</param>
-        private static void CreateHtmlReport(string inputFile, string outputFile, string reportUnitPath)
+        private static void CreateHtmlReport(string inputFile, string outputFolder, string reportUnitPath)
         {
             if (!File.Exists(inputFile))
                 return;
 
-            if (File.Exists(outputFile))
-                File.Delete(outputFile);
+            if (!Directory.Exists(outputFolder))
+                Directory.CreateDirectory(outputFolder);
 
             using (var process = new Process())
             {
@@ -66,7 +70,8 @@ namespace TestRunnerACAD
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.FileName = reportUnitPath;
-                process.StartInfo.Arguments = $" \"{inputFile}\" \"{outputFile}\"";
+                //extent -i results/nunit.xml -o results/ -r v3html
+                process.StartInfo.Arguments = $" \"-i\" \"{inputFile}\" \"-o\" \"{outputFolder}\" \"-r\" \"v3html\"";
 
                 process.Start();
                 process.WaitForExit();
